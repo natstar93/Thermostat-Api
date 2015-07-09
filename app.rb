@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra'
 
 class ThermostatApi < Sinatra::Base
   get '/' do
