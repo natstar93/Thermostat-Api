@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+    <link rel="stylesheet" type="text/css" href="<%= url('/styles/main.css') %>">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div>
+        <h1>Thermostat</h1>
+        <p id="temperature"></p>
+      </div>
+
+      <div class="buttons">
+        <img src="http://www.seducewomenguide.com/wp-content/uploads/2014/08/up-arrow-clip-art.gif" id="up" class="btn">
+        <img src="http://www.clipart-fr.com/en/data/clipart/arrows/arrow_0038.gif" id="down" class="btn">
+        <img src="http://3.bp.blogspot.com/-Ob2_OCwZRGM/T7Hgm5fxZbI/AAAAAAAABbA/miyCUUA1McQ/s1600/Refresh-Button2.gif" class="btn" id="reset"/>
+      </div>
+
+      <div>
+        <input type="checkbox" id="powersave" checked>
+        Powersave mode
+      </div>
+      
+      <div>
+        <p id='local_temp'></p>
+      </div>
+
+      <div class="weather">
+        Choose a city:
+        <select id='cities'>
+          <option value="london">London</option>
+          <option value="kiev">Kiev</option>
+          <option value="moscow,ru">Moscow</option>
+        </select>
+
+        <div>
+          <p id="current">The current temperature in <span id="city"></span> is <span id="currentTemp"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="src/Thermostat.js"></script>
+    <script src="src/App.js"></script>
+  </body>
+</html>
+
