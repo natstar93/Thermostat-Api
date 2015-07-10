@@ -2,6 +2,7 @@ $(document).ready(function() {
   
   var thermostat = new Thermostat;
   showTemperature();
+  firstTemp();
   navigator.geolocation.getCurrentPosition(onPositionUpdate);
 
   $.ajax({url: "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric", success: function(result){
@@ -41,28 +42,37 @@ $(document).ready(function() {
   $("#up").click(function() {
     thermostat.increase();
     showTemperature();
-    $.post("http://localhost:9292/new",
-     { temp:thermostat.temperature, time:new Date() },
-     function() {
-         alert('working');
-     }
-   );
-  });
+    recordTemp();
+  }); 
+  
+  function firstTemp() {
+    $.get('/temp', function(data) {
+     thermostat.temperature = data;
+     showTemperature();
+    });
+  };
 
+  function recordTemp() {
+  	$.post("/new", { temp:thermostat.temperature, time:new Date() }, function() {  
+    });
+  }
 
   $("#down").click(function(){
     thermostat.decrease();
     showTemperature();
+    recordTemp();
   });
 
   $("#powersave").click(function() {
     thermostat.powerSaveToggle();
     showTemperature();
+    recordTemp();
   });
   
   $("#reset").click(function() {
     thermostat.resetTemperature();
     showTemperature();
+    recordTemp();
   });
 
 });
