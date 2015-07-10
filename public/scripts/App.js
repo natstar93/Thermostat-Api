@@ -41,7 +41,14 @@ $(document).ready(function() {
   $("#up").click(function() {
     thermostat.increase();
     showTemperature();
+    $.post("http://localhost:9292/new",
+     { temp:thermostat.temperature, time:new Date() },
+     function() {
+         alert('working');
+     }
+   );
   });
+
 
   $("#down").click(function(){
     thermostat.decrease();
