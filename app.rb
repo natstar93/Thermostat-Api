@@ -15,7 +15,7 @@ class ThermostatApi < Sinatra::Base
   end
 
   get '/temp' do
-    '#{ session[:temperature] || 20 }'
+    session[:temperature] || 20 
   end
 
   run! if app_file == $0
